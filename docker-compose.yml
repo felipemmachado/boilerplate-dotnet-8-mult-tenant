@@ -1,0 +1,25 @@
+version: '3'
+services:
+  backend:
+    restart: unless-stopped
+    container_name: "backend-dev"
+    image: "backend:latest"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5001
+
+      - ConnectionStrings__AppConnection=
+      - ConnectionStrings__ApplicationInsights=
+
+      - JwtApplicationConfig__Key=
+      - JwtApplicationConfig__Issuer=YouinBackofficeDEV
+      - JwtApplicationConfig__Audience=ApplicationToken
+      - JwtApplicationConfig__ExpiresInMinutes=480
+
+      - FileConfig__BucketName=
+      - FileConfig__BucketUrl=
+      - FileConfig__AccessKeyId=
+      - FileConfig__AwsSecretKey=
+    
+    ports:
+      - "2002:5001"
