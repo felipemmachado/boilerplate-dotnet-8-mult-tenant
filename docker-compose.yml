@@ -12,7 +12,7 @@ services:
       - ConnectionStrings__ApplicationInsights=
 
       - JwtApplicationConfig__Key=
-      - JwtApplicationConfig__Issuer=YouinBackofficeDEV
+      - JwtApplicationConfig__Issuer=BackofficeDEV
       - JwtApplicationConfig__Audience=ApplicationToken
       - JwtApplicationConfig__ExpiresInMinutes=480
 
