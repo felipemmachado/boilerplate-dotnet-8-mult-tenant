@@ -31,7 +31,7 @@ namespace Domain.Entities
         public bool IsActive => DisabledAt == null;
         public IList<User> Users { get; protected set; } = [];
 
-        public void Update(string url, string companyName, string tradingName, string document, int serviceSla)
+        public void Update(string url, string companyName, string tradingName, string document)
         {
             Url = url;
             CompanyName = companyName;

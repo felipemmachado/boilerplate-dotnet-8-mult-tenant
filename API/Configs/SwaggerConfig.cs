@@ -5,7 +5,7 @@ namespace API.Configs
 {
     public static class SwaggerConfig
     {
-        public static IServiceCollection AddSwaggerConfigs(this IServiceCollection services)
+        public static void AddSwaggerConfigs(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
             {
@@ -61,7 +61,6 @@ namespace API.Configs
                 });
             });
 
-            return services;
         }
     }
 }

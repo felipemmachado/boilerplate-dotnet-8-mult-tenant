@@ -7,7 +7,7 @@ namespace API.Configs
 {
     public static class AuthorizationConfig
     {
-        public static IServiceCollection AddAuthorization(this IServiceCollection services, IConfiguration configuration)
+        public static void AddAuthorization(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>()
                 ?? throw new ArgumentNullException("Não foi possível carregar as configs do jwt da aplicação");
@@ -36,7 +36,6 @@ namespace API.Configs
 
             });
 
-            return services;
         }
     }
 }

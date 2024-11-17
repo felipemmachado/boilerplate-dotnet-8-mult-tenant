@@ -5,6 +5,8 @@ namespace Application.Common.Constants
     public static class ApiResponseMessages
     {
         public const string YouDoNotHavePermission = "Você não tem permissão.";
+        public const string DocumentAlreadyRegistered = "CNPJ já cadastrado.";
+        public const string UrlAlreadyUsed = "Essa url já está sendo utilizada.";
         public const string UserIdRequired = "O id do usuário é obrigatório.";
         public const string PasswordMostHaveAtLeastOneNumber = "A senha tem que ter pelo menos um número.";
         public const string PasswordMostHaveAtLeastOneUpperLetter = "A senha tem que ter pelo menos uma letra maiúscula.";
@@ -31,6 +33,19 @@ namespace Application.Common.Constants
         public const string PostNotFound = "Post não encontrado.";
         public const string SomeValidationsFail ="Algumas validações falharam.";
         public const string ErrorOccuredMessageNotCatched = "Erro ocorrido, mensagem não capturada.";
+        
+        public const string InvalidDocument = "CNPJ inválido.";
+        public const string InvalidTabBrowserTitle = "Titulo de exibição da aba do navegador inválido";
+        public const string InvalidUrl = "Url inválida. Url só podem conter letras minúsculas, números e hifens. Eles devem começar e terminar com uma letra ou número.";
+        
+        public const string EnterACompanyName = "Você tem que digitar a razão social.";
+        public const string EnterATradingName = "Você tem que digitar o nome fantasia.";
+        public const string EnterADocument = "Você tem que digitar um cnpj.";
+        public const string EnterAUrl = "Você tem que digitar uma url.";
+        public const string EnterAPrimaryColor = "Você tem que informar a cor primaria.";
+        public const string InvalidPrimaryColor = "Cor primaria inválida. Padrão: #000000.";
+        public const string EnterAButtonColor = "Você tem que informar a cor dos botões.";
+        public const string InvalidButtonColor = "Cor dos botões inválida. Padrão: #000000.";
 
         public static string EmailAlreadyRegistered(string email)
         {
