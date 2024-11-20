@@ -24,7 +24,7 @@ namespace Application.UseCases.Companies.CreateCompany
                 .IsValidCNPJ()
                 .WithMessage(ApiResponseMessages.InvalidDocument);
 
-            RuleFor(v => v.Url)
+            RuleFor(v => v.Slug)
                 .MaximumLength(100)
                 .NotEmpty()
                 .WithMessage(ApiResponseMessages.EnterAUrl)

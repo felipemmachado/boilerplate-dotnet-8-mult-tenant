@@ -10,7 +10,7 @@ namespace Application.UseCases.Companies.CreateCompany
 {
     [ExcludeFromCodeCoverage]
     public record struct CreateCompanyCommand(
-        string Url,
+        string Slug,
         string CompanyName,
         string TradingName,
         string Document,
@@ -28,12 +28,12 @@ namespace Application.UseCases.Companies.CreateCompany
     {
         public async Task<CreateCompanyDto> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
-            var existUrl = await context
+            var existSlug = await context
                 .Companies
-                .Select(p => p.Url)
-                .FirstOrDefaultAsync(p => p == request.Url, cancellationToken);
+                .Select(p => p.Slug)
+                .FirstOrDefaultAsync(p => p == request.Slug, cancellationToken);
 
-            if (existUrl != null)
+            if (existSlug != null)
                 throw new ValidationException(ApiResponseMessages.UrlAlreadyUsed);
 
             var existDocument = await context
@@ -44,7 +44,7 @@ namespace Application.UseCases.Companies.CreateCompany
             if (existDocument != null)
                 throw new ValidationException(ApiResponseMessages.DocumentAlreadyRegistered);
             
-            var company = new Company(request.Url, request.CompanyName, request.TradingName, request.Document);
+            var company = new Company(request.Slug, request.CompanyName, request.TradingName, request.Document);
             var customization = new Customization(request.PrimaryColor, request.ButtonColor, request.TabBrowserTitle);
             
             var password = passwordService.GenerateRandomPassword();

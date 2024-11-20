@@ -32,13 +32,13 @@ namespace Infra.Services
 
         private async Task<string> Url(string uri)
         {
-            var urlTenant = await context
+            var tenantSlug = await context
                     .Companies
                     .Where(p => p.Id == currentTenantService.TenantId)
-                    .Select(p => p.Url).FirstAsync()
+                    .Select(p => p.Slug).FirstAsync()
                 ?? throw new ValidationException(ApiResponseMessages.TenantIdRequired);
 
-            return $"{_apiConfig.AppUrl}/{urlTenant}/{uri}";
+            return $"{_apiConfig.AppUrl}/{tenantSlug}/{uri}";
         }
 
         private async Task<Response> SendEmail(string templateId, string email, object data)

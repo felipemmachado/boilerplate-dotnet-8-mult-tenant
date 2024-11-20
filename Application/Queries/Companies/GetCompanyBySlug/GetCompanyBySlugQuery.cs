@@ -3,20 +3,20 @@ using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-namespace Application.Queries.Companies.GetCompanyByUrl
+namespace Application.Queries.Companies.GetCompanyBySlug
 {
-    public record struct GetCompanyByUrlQuery(string Url) : IRequest<GetCompanyDto>;
+    public record struct GetCompanyBySlugQuery(string Slug) : IRequest<GetCompanyDto>;
 
-    public class GetCompanyByUrlQueryHandler(
+    public class GetCompanyBySlugQueryHandler(
         IApplicationDbContext context,
         IFileService fileService)
-        : IRequestHandler<GetCompanyByUrlQuery, GetCompanyDto>
+        : IRequestHandler<GetCompanyBySlugQuery, GetCompanyDto>
     {
-        public async Task<GetCompanyDto> Handle(GetCompanyByUrlQuery request, CancellationToken cancellationToken)
+        public async Task<GetCompanyDto> Handle(GetCompanyBySlugQuery request, CancellationToken cancellationToken)
         {
             var company = await context
                     .Companies
-                    .Where(p => p.Url == request.Url)
+                    .Where(p => p.Slug == request.Slug)
                     .Select(p => new
                     {
                         p.Id,

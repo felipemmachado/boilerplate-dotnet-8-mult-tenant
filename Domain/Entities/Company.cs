@@ -10,18 +10,18 @@ namespace Domain.Entities
             Expression.Empty();
         }
 
-        public Company(string url,
+        public Company(string slug,
             string companyName,
             string tradingName,
             string document)
         {
-            Url = url;
+            Slug = slug;
             CompanyName = companyName;
             TradingName = tradingName;
             Document = document;
         }
 
-        public string? Url { get; protected set; } = string.Empty;
+        public string? Slug { get; protected set; } = string.Empty;
         public string? CompanyName { get; protected set; } = string.Empty;
         public string? TradingName { get; protected set; } = string.Empty;
         public Attachment? Logo { get; private set; }
@@ -31,9 +31,9 @@ namespace Domain.Entities
         public bool IsActive => DisabledAt == null;
         public IList<User> Users { get; protected set; } = [];
 
-        public void Update(string url, string companyName, string tradingName, string document)
+        public void Update(string slug, string companyName, string tradingName, string document)
         {
-            Url = url;
+            Slug = slug;
             CompanyName = companyName;
             TradingName = tradingName;
             Document = document;

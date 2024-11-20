@@ -1,9 +1,8 @@
 using API.Controllers.v1.@base;
 using Application.Common.Configs;
 using Application.Common.Exceptions;
-using Application.Queries.Companies.GetCompanyByUrl;
+using Application.Queries.Companies.GetCompanyBySlug;
 using Application.UseCases.Companies.CreateCompany;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -14,10 +13,10 @@ namespace API.Controllers.v1
     {
         private readonly ApiConfig _apiConfig = apiConfig.Value ?? throw new ArgumentNullException(nameof(apiConfig));
 
-        [HttpGet("{url}/tenancy")]
-        public async Task<GetCompanyDto> GetByUrl(string url)
+        [HttpGet("{slug}/tenancy")]
+        public async Task<GetCompanyDto> GetByUrl(string slug)
         {
-            return await Mediator.Send(new GetCompanyByUrlQuery(url));
+            return await Mediator.Send(new GetCompanyBySlugQuery(slug));
         }
         
         [HttpPost("{token}/sync")]

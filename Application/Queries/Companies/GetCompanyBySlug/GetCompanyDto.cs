@@ -1,6 +1,6 @@
 using Application.Common.Mappings;
 using Domain.Entities;
-namespace Application.Queries.Companies.GetCompanyByUrl
+namespace Application.Queries.Companies.GetCompanyBySlug
 {
     public record struct GetCompanyDto(
         Guid Id, 
